@@ -1,10 +1,10 @@
 public class Cat extends Tamagotchi {
     public int cleanliness = Game.randomInt;
 
-
     public Cat(String name, boolean gender) {
         super(name, gender);
     }
+
 
     public static void feedCatArt() {
         System.out.println();
@@ -14,6 +14,58 @@ public class Cat extends Tamagotchi {
         System.out.println("         _U//_/-/__///");
         System.out.println("        /kit\\      ((");
         System.out.println("        ^^^^^       `");
+    }
+
+    public void batheTamagotchiArt() {
+        System.out.println();
+        System.out.println("      ( \\");
+        System.out.println("       \\ \\");
+        System.out.println("       / /                |\\\\");
+        System.out.println("      / /     .-`````-.   / ^`-.");
+        System.out.println("      \\ \\    /         \\_/  {|} `o");
+        System.out.println("       \\ \\  /   .---.   \\\\ _  ,--'");
+        System.out.println("        \\ \\/   /     \\,  \\( `^^^");
+        System.out.println("         \\   \\/\\      (\\  )");
+        System.out.println("          \\   ) \\     ) \\ \\");
+        System.out.println("           ) /__ \\__  ) (\\ \\___");
+        System.out.println("          (___)))__))(__))(__)))");
+    }
+
+    public void playCatArt() {
+        System.out.println();
+        System.out.println("                   __     __,");
+        System.out.println("                      \\,`~\"~` /");
+        System.out.println("      .-=-.           /    . .\\");
+        System.out.println("     / .-. \\          {  =    Y}=");
+        System.out.println("    (_/   \\ \\          \\      / ");
+        System.out.println("           \\ \\        _/`'`'`b");
+        System.out.println("            \\ `.__.-'`        \\-._");
+        System.out.println("             |            '.__ `'-;_");
+        System.out.println("             |            _.' `'-.__)");
+        System.out.println("              \\    ;_..--'/     //  \\");
+        System.out.println("              |   /  /   |     //    |");
+        System.out.println("              \\  \\ \\__)   \\   //    /");
+        System.out.println("               \\__)        './/   .'");
+        System.out.println("                             `'-'`");
+    }
+
+    public void sleepCatWakingUpArt() {
+        System.out.println();
+        System.out.println("             _,'|             _.-''``-...___..--';)");
+        System.out.println("           /_ \\'.      __..-' ,      ,--...--'''");
+        System.out.println("          <\\    .`--'''       `     /'");
+        System.out.println("           `-';'               ;   ; ;");
+        System.out.println("     __...--''     ___...--_..'  .;.'");
+        System.out.println("    (,__....----'''       (,..--''");
+    }
+
+    public void sleepCatSleepingArt() {
+        System.out.println();
+        System.out.println("      |\\      _,,,---,,_");
+        System.out.println("ZZZzz /,`.-'`'    -.  ;-;;,_");
+        System.out.println("     |,4-  ) )-,_. ,\\ (  `'-'");
+        System.out.println("    '---''(_/--'  `-'\\_)   ");
+        System.out.println();
     }
 
     public void lickFurArt() {
@@ -41,6 +93,7 @@ public class Cat extends Tamagotchi {
         System.out.println("                            '-'");
     }
 
+
     public void lickFur() {
         if (cleanliness >= 3) {
             lickFurArt();
@@ -51,21 +104,6 @@ public class Cat extends Tamagotchi {
             System.out.println("\n" + this.name + " refused to lick " + genderRhetoricLowercase(this.gender, false) +
                     " fur, because it is too dirty");
         }
-    }
-
-    public void batheTamagotchiArt() {
-        System.out.println();
-        System.out.println("      ( \\");
-        System.out.println("       \\ \\");
-        System.out.println("       / /                |\\\\");
-        System.out.println("      / /     .-`````-.   / ^`-.");
-        System.out.println("      \\ \\    /         \\_/  {|} `o");
-        System.out.println("       \\ \\  /   .---.   \\\\ _  ,--'");
-        System.out.println("        \\ \\/   /     \\,  \\( `^^^");
-        System.out.println("         \\   \\/\\      (\\  )");
-        System.out.println("          \\   ) \\     ) \\ \\");
-        System.out.println("           ) /__ \\__  ) (\\ \\___");
-        System.out.println("          (___)))__))(__))(__)))");
     }
 
     public void batheTamagotchi() {
@@ -85,24 +123,7 @@ public class Cat extends Tamagotchi {
         }
     }
 
-    public void playCatArt() {
-        System.out.println();
-        System.out.println("                   __     __,");
-        System.out.println("                      \\,`~\"~` /");
-        System.out.println("      .-=-.           /    . .\\");
-        System.out.println("     / .-. \\          {  =    Y}=");
-        System.out.println("    (_/   \\ \\          \\      / ");
-        System.out.println("           \\ \\        _/`'`'`b");
-        System.out.println("            \\ `.__.-'`        \\-._");
-        System.out.println("             |            '.__ `'-;_");
-        System.out.println("             |            _.' `'-.__)");
-        System.out.println("              \\    ;_..--'/     //  \\");
-        System.out.println("              |   /  /   |     //    |");
-        System.out.println("              \\  \\ \\__)   \\   //    /");
-        System.out.println("               \\__)        './/   .'");
-        System.out.println("                             `'-'`");
-    }
-
+    
     @Override
     public void play() {
         System.out.println("\n" + "You played with " + name);
@@ -120,25 +141,6 @@ public class Cat extends Tamagotchi {
             System.out.print(name + " fainted due to exhaustion, so ");
             switchSleepState("3");                                     //Induces sleep state
         }
-    }
-
-    public void sleepCatWakingUpArt() {
-        System.out.println();
-        System.out.println("             _,'|             _.-''``-...___..--';)");
-        System.out.println("           /_ \\'.      __..-' ,      ,--...--'''");
-        System.out.println("          <\\    .`--'''       `     /'");
-        System.out.println("           `-';'               ;   ; ;");
-        System.out.println("     __...--''     ___...--_..'  .;.'");
-        System.out.println("    (,__....----'''       (,..--''");
-    }
-
-    public void sleepCatSleepingArt() {
-        System.out.println();
-        System.out.println("      |\\      _,,,---,,_");
-        System.out.println("ZZZzz /,`.-'`'    -.  ;-;;,_");
-        System.out.println("     |,4-  ) )-,_. ,\\ (  `'-'");
-        System.out.println("    '---''(_/--'  `-'\\_)   ");
-        System.out.println();
     }
 
     @Override

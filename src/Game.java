@@ -1,39 +1,35 @@
 import java.util.Scanner;
+//The class Game, which contains the main method, and the class Tamagotchi,
+//contain an array of detailed commentary, which is not present within the
+//two subclasses (Cat & Dog), due to the commentary becoming repetitive
 
 public class Game {
-    public static boolean randomBoolean = getRandomBoolean();
-    public static int randomInt = getRandomInt(10, 3);
+    public static int randomInt = getRandomInt(10, 3); //This variable is used throughout the program to determine
+    // the initial value of a certain attribute. The int is randomly generated within the confines of the interval 3-10.
     public static String typeOfTamagotchi;
     static Scanner scan = new Scanner(System.in);
 
+    //Method used for generate the random attributes for the objects (Cat/Dog
     public static int getRandomInt(int max, int min) {
         int range = max - min + 1;
         return (int) (Math.random() * range) + min;
     }
 
-    public static boolean getRandomBoolean() {
-        int range = 2;
-        int oneOrTwo = (int) (Math.random() * range) + 1;
-
-        if (oneOrTwo == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-
+    //Method that returns an object of the class Cat
+    //Created with both name and gender
     public static Cat createNewCat(String nameOfTamagotchi, boolean choiceOfGender) {
         return new Cat(nameOfTamagotchi, choiceOfGender);
     }
 
+    //This method prompts the user to take an action in reference to the Tamagotchi
+    //After each user input, the method is called again, therein functioning as a loop
     public static void gameMenuCat(Cat newCatObject) {
 
         System.out.println("\n\nNow what would you like to do with " + newCatObject.name + "?");
         System.out.println("__________________________________________________");
         System.out.println("Press 1: Play\nPress 2: Feed\nPress 3: Lick " +
-                newCatObject.genderRhetoricLowercase(false, false) +
-                "self\nPress 4: Give a bath\nPress 5: Sleep\nPress 6: Quit");
+                newCatObject.genderRhetoricHimOrHer(newCatObject.gender) +
+                "\nPress 4: Give a bath\nPress 5: Sleep\nPress 6: Quit");
 
         String choiceOfActivity = scan.nextLine();
         if (choiceOfActivity.equals("1")) {
@@ -54,21 +50,23 @@ public class Game {
         } else if (choiceOfActivity.equals("6")) {
             System.out.println();
         } else {
-            System.out.println("Please choose an activity");
-            gameMenuCat(newCatObject);
+            System.out.println("Please choose an activity"); //If anything other than 1,2,3,4,5 or 6 is entered,
+            gameMenuCat(newCatObject); //this will print, subsequently returning the user to the start of the method again
         }
     }
 
-
+    //Method that returns an object of the class Dog
+    //Created with both name and gender
     public static Dog createNewDog(String nameOfTamagotchi, boolean choiceOfGender) {
         return new Dog(nameOfTamagotchi, choiceOfGender);
     }
 
+    //This method works in much the same way as the gameMenuCat
     public static void gameMenuDog(Dog newDogObject) {
 
         System.out.println("\n\nNow what would you like to do with " + newDogObject.name + "?");
         System.out.println("__________________________________________________");
-        System.out.println("Press 1: Play\nPress 2: Feed\nPress 3: Give love\nPress 4: Give treat\nPress 5: Teach trick" +
+        System.out.println("Press 1: Play\nPress 2: Feed\nPress 3: Teach trick\nPress 4: Give treat\nPress 5: Give love" +
                 "\nPress 6: Sleep\nPress 7: Quit");
 
         String choiceOfActivity = scan.nextLine();
@@ -79,13 +77,13 @@ public class Game {
             newDogObject.feed();
             gameMenuDog(newDogObject);
         } else if (choiceOfActivity.equals("3")) {
-            newDogObject.giveLove();
+            newDogObject.teachTrick();
             gameMenuDog(newDogObject);
         } else if (choiceOfActivity.equals("4")) {
             newDogObject.giveTreat();
             gameMenuDog(newDogObject);
         } else if (choiceOfActivity.equals("5")) {
-            newDogObject.learnTrick();
+            newDogObject.giveLove();
             gameMenuDog(newDogObject);
         } else if (choiceOfActivity.equals("6")) {
             newDogObject.switchSleepState("2");

@@ -11,6 +11,7 @@ public class Tamagotchi {
         this.gender = gender;
     }
 
+    //Depending on the gender, different pronouns are required, whether they be regular or possessive
     public String genderRhetoricFirstLetterCapital(boolean gender, boolean simpleOrPossessivePronoun) {
         if (gender) {
             if (simpleOrPossessivePronoun) {
@@ -27,6 +28,13 @@ public class Tamagotchi {
         }
     }
 
+    public String genderRhetoricHimOrHer(boolean gender) {
+        if (gender) {
+            return "him";
+        } else {
+            return "her";
+        }
+    }
 
     public String genderRhetoricLowercase(boolean gender, boolean simpleOrPossessivePronoun) {
         if (gender) {
@@ -44,7 +52,8 @@ public class Tamagotchi {
         }
     }
 
-
+    //If either one of the following attributes has a value below, or equal to a set threshold
+    // that will determine the "state of mind" of the object in question
     public String stateOfMind() {
         String stateOfMind = "";
         if (this.mood < 4 || this.energy < 4 || this.fullness < 4) {
@@ -57,6 +66,9 @@ public class Tamagotchi {
     }
 
 
+    //1: Tamagotchi woke up
+    //2: Tamagotchi went to sleep, and woke up
+    //3: Tamagotchi fainted and went to sleep, for then wake up again
     public void switchSleepState(String awakeOrNot) {
         if (awakeOrNot.equals("1")) {
             System.out.println(name + " woke up feeling " + stateOfMind());
@@ -76,6 +88,8 @@ public class Tamagotchi {
     }
 
 
+    //Is never actually used, due to it being overwritten in each of the following subclasses
+    //I wanted to use the super., but couldn't figure out how to implement the changes that were required
     public void play() {
         System.out.println("\n" + "You played with " + name);
 
@@ -89,6 +103,7 @@ public class Tamagotchi {
         }
     }
 
+    //Calls either Cat or Dog method based on typeOfTamagotchi, which was input by user in the beginning of Game.main
     public void feedArt() {
         if (Game.typeOfTamagotchi.equals("1")) {
             Cat.feedCatArt();
@@ -120,7 +135,9 @@ public class Tamagotchi {
         }
     }
 
-
+    //The "variable" parametre is used to both in this method and the following one
+    //Positive or negative, affects whether the int "increaseOrDecreaseByValue", is to be added or subtracted from the attribute
+    //The number itself is determiner for which attribute is to be altered
     public int getTypeOfStatValue(String variable, int increaseOrDecreaseByValue) {
 
         int returnValue = 0;
@@ -173,7 +190,7 @@ public class Tamagotchi {
         return returnValue;
     }
 
-
+    //Here the "variable" parametre is solely used to print the name of the attribute as a String
     public String getTypeOfStatString(String variable) {
 
         if (variable.equals("1") || variable.equals("-1")) {
@@ -186,7 +203,10 @@ public class Tamagotchi {
         return "null";
     }
 
-
+    //This method saves a lot of space in that it can be called on every attribute
+    //It takes the calculation into account when determining the rhetoric to be used in describing said calculation
+    //The three parametres the method takes are firstly the already talked about "variable", and "increaseOrDecreaseByValue".
+    //The last is the "input", which can either be 1.0 (positive "addition" - rhetoric) or 2.0 (negative "subtraction" - rhetoric)
     public void printOfAttribute(String variable, double input, int increaseOrDecreaseByValue) {
 
         //Variable declarations
