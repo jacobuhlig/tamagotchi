@@ -1,7 +1,7 @@
 public class Tamagotchi {
     public String name;
     public boolean gender;
-    public static int mood = Game.randomInt;
+    public int mood = Game.randomInt;
     public int energy = Game.randomInt;
     public int fullness = Game.randomInt;
 
@@ -54,14 +54,13 @@ public class Tamagotchi {
 
     //If either one of the following attributes has a value below, or equal to a set threshold
     // that will determine the "state of mind" of the object in question
-    public String stateOfMind() {
-        String stateOfMind = "";
+    public void stateOfMind() {
         if (this.mood < 4 || this.energy < 4 || this.fullness < 4) {
-            return stateOfMind = "sluggish";
+            System.out.println("sluggish");
         } else if (this.mood < 6 || this.energy < 6 || this.fullness < 6) {
-            return stateOfMind = "happy";
+            System.out.println("happy");
         } else {
-            return stateOfMind = "overjoyed";
+            System.out.println("overjoyed");
         }
     }
 
@@ -71,7 +70,8 @@ public class Tamagotchi {
     //3: Tamagotchi fainted and went to sleep, for then wake up again
     public void switchSleepState(String awakeOrNot) {
         if (awakeOrNot.equals("1")) {
-            System.out.println(name + " woke up feeling " + stateOfMind());
+            System.out.print(name + " woke up feeling ");
+            stateOfMind();
         } else if (awakeOrNot.equals("2")) {
             System.out.println("\n" + name + " went to sleep");
             printOfAttribute("1", 1.0, 3); //Mood went up by three
@@ -143,41 +143,46 @@ public class Tamagotchi {
         int returnValue = 0;
 
         //mood
-        if (variable.equals("1")) {
-            returnValue = mood += increaseOrDecreaseByValue;
-            if (returnValue >= 10) {
-                mood = 10;
+        switch (variable) {
+            case "1" -> {
+                returnValue = mood += increaseOrDecreaseByValue;
+                if (returnValue >= 10) {
+                    mood = 10;
+                }
             }
-        } else if (variable.equals("-1")) {
-            returnValue = mood -= increaseOrDecreaseByValue;
-            if (returnValue <= 0) {
-                mood = 0;
+            case "-1" -> {
+                returnValue = mood -= increaseOrDecreaseByValue;
+                if (returnValue <= 0) {
+                    mood = 0;
+                }
             }
-        }
 
-        //energy
-        else if (variable.equals("2")) {
-            returnValue = energy += increaseOrDecreaseByValue;
-            if (returnValue >= 10) {
-                energy = 10;
+            //energy
+            case "2" -> {
+                returnValue = energy += increaseOrDecreaseByValue;
+                if (returnValue >= 10) {
+                    energy = 10;
+                }
             }
-        } else if (variable.equals("-2")) {
-            returnValue = energy -= increaseOrDecreaseByValue;
-            if (returnValue <= 0) {
-                energy = 0;
+            case "-2" -> {
+                returnValue = energy -= increaseOrDecreaseByValue;
+                if (returnValue <= 0) {
+                    energy = 0;
+                }
             }
-        }
 
-        //fullness
-        else if (variable.equals("3")) {
-            returnValue = fullness += increaseOrDecreaseByValue;
-            if (returnValue >= 10) {
-                fullness = 10;
+            //fullness
+            case "3" -> {
+                returnValue = fullness += increaseOrDecreaseByValue;
+                if (returnValue >= 10) {
+                    fullness = 10;
+                }
             }
-        } else if (variable.equals("-3")) {
-            returnValue = fullness -= increaseOrDecreaseByValue;
-            if (returnValue <= 0) {
-                fullness = 0;
+            case "-3" -> {
+                returnValue = fullness -= increaseOrDecreaseByValue;
+                if (returnValue <= 0) {
+                    fullness = 0;
+                }
             }
         }
 
@@ -193,14 +198,12 @@ public class Tamagotchi {
     //Here the "variable" parametre is solely used to print the name of the attribute as a String
     public String getTypeOfStatString(String variable) {
 
-        if (variable.equals("1") || variable.equals("-1")) {
-            return "mood";
-        } else if (variable.equals("2") || variable.equals("-2")) {
-            return "energy";
-        } else if (variable.equals("3") || variable.equals("-3")) {
-            return "fullness";
-        }
-        return "null";
+        return switch (variable) {
+            case "1", "-1" -> "mood";
+            case "2", "-2" -> "energy";
+            case "3", "-3" -> "fullness";
+            default -> "null";
+        };
     }
 
     //This method saves a lot of space in that it can be called on every attribute
@@ -210,12 +213,8 @@ public class Tamagotchi {
     public void printOfAttribute(String variable, double input, int increaseOrDecreaseByValue) {
 
         //Variable declarations
-        String name = this.name;
         boolean gender = this.gender;
 
-        String namePronoun = genderRhetoricLowercase(gender, true);
-        String namePossessivePronoun = genderRhetoricLowercase(gender, false);
-        String namePronounCap = genderRhetoricFirstLetterCapital(gender, true);
         String namePossessivePronounCap = genderRhetoricFirstLetterCapital(gender, false);
 
         int stat = getTypeOfStatValue(variable, 0);
@@ -243,7 +242,7 @@ public class Tamagotchi {
             } else if (stat == 0) {
                 System.out.println(namePossessivePronounCap + " " + wordStat + " is still at the lowest point");
             } else {
-                stat = (getTypeOfStatValue(variable, 10));
+                getTypeOfStatValue(variable, 10);
                 System.out.println(namePossessivePronounCap + " " + wordStat + " has reached its lowest point");
             }
         }

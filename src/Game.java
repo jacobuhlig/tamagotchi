@@ -32,26 +32,32 @@ public class Game {
                 "\nPress 4: Give a bath\nPress 5: Sleep\nPress 6: Quit");
 
         String choiceOfActivity = scan.nextLine();
-        if (choiceOfActivity.equals("1")) {
-            newCatObject.play();
-            gameMenuCat(newCatObject);
-        } else if (choiceOfActivity.equals("2")) {
-            newCatObject.feed();
-            gameMenuCat(newCatObject);
-        } else if (choiceOfActivity.equals("3")) {
-            newCatObject.lickFur();
-            gameMenuCat(newCatObject);
-        } else if (choiceOfActivity.equals("4")) {
-            newCatObject.batheTamagotchi();
-            gameMenuCat(newCatObject);
-        } else if (choiceOfActivity.equals("5")) {
-            newCatObject.switchSleepState("2");
-            gameMenuCat(newCatObject);
-        } else if (choiceOfActivity.equals("6")) {
-            System.out.println();
-        } else {
-            System.out.println("Please choose an activity"); //If anything other than 1,2,3,4,5 or 6 is entered,
-            gameMenuCat(newCatObject); //this will print, subsequently returning the user to the start of the method again
+        switch (choiceOfActivity) {
+            case "1" -> {
+                newCatObject.play();
+                gameMenuCat(newCatObject);
+            }
+            case "2" -> {
+                newCatObject.feed();
+                gameMenuCat(newCatObject);
+            }
+            case "3" -> {
+                newCatObject.lickFur();
+                gameMenuCat(newCatObject);
+            }
+            case "4" -> {
+                newCatObject.batheTamagotchi();
+                gameMenuCat(newCatObject);
+            }
+            case "5" -> {
+                newCatObject.switchSleepState("2");
+                gameMenuCat(newCatObject);
+            }
+            case "6" -> System.out.println();
+            default -> {
+                System.out.println("Please choose an activity"); //If anything other than 1,2,3,4,5 or 6 is entered,
+                gameMenuCat(newCatObject); //this will print, subsequently returning the user to the start of the method again
+            }
         }
     }
 
@@ -66,33 +72,46 @@ public class Game {
 
         System.out.println("\n\nNow what would you like to do with " + newDogObject.name + "?");
         System.out.println("__________________________________________________");
-        System.out.println("Press 1: Play\nPress 2: Feed\nPress 3: Teach trick\nPress 4: Give treat\nPress 5: Give love" +
-                "\nPress 6: Sleep\nPress 7: Quit");
+        System.out.println("""
+                Press 1: Play
+                Press 2: Feed
+                Press 3: Teach trick
+                Press 4: Give treat
+                Press 5: Give love
+                Press 6: Sleep
+                Press 7: Quit""");
 
         String choiceOfActivity = scan.nextLine();
-        if (choiceOfActivity.equals("1")) {
-            newDogObject.play();
-            gameMenuDog(newDogObject);
-        } else if (choiceOfActivity.equals("2")) {
-            newDogObject.feed();
-            gameMenuDog(newDogObject);
-        } else if (choiceOfActivity.equals("3")) {
-            newDogObject.teachTrick();
-            gameMenuDog(newDogObject);
-        } else if (choiceOfActivity.equals("4")) {
-            newDogObject.giveTreat();
-            gameMenuDog(newDogObject);
-        } else if (choiceOfActivity.equals("5")) {
-            newDogObject.giveLove();
-            gameMenuDog(newDogObject);
-        } else if (choiceOfActivity.equals("6")) {
-            newDogObject.switchSleepState("2");
-            gameMenuDog(newDogObject);
-        } else if (choiceOfActivity.equals("7")) {
-            System.out.println();
-        } else {
-            System.out.println("Please choose an activity");
-            gameMenuDog(newDogObject);
+        switch (choiceOfActivity) {
+            case "1" -> {
+                newDogObject.play();
+                gameMenuDog(newDogObject);
+            }
+            case "2" -> {
+                newDogObject.feed();
+                gameMenuDog(newDogObject);
+            }
+            case "3" -> {
+                newDogObject.teachTrick();
+                gameMenuDog(newDogObject);
+            }
+            case "4" -> {
+                newDogObject.giveTreat();
+                gameMenuDog(newDogObject);
+            }
+            case "5" -> {
+                newDogObject.giveLove();
+                gameMenuDog(newDogObject);
+            }
+            case "6" -> {
+                newDogObject.switchSleepState("2");
+                gameMenuDog(newDogObject);
+            }
+            case "7" -> System.out.println();
+            default -> {
+                System.out.println("Please choose an activity");
+                gameMenuDog(newDogObject);
+            }
         }
     }
 
@@ -110,10 +129,7 @@ public class Game {
         System.out.println("_____________________________________________");
         System.out.println("\nPress 1:\tBoy\nPress 2:\tGirl");
         String maleOrFemaleString = scan.nextLine();
-        boolean maleOrFemaleBoolean = true;
-        if (maleOrFemaleString.equals("2")) {
-            maleOrFemaleBoolean = false;
-        }
+        boolean maleOrFemaleBoolean = !maleOrFemaleString.equals("2");
 
         System.out.println("\nWhat name would you like your Tamagotchi to have?");
         System.out.println("__________________________________________________");

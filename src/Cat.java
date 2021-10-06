@@ -123,7 +123,7 @@ public class Cat extends Tamagotchi {
         }
     }
 
-    
+
     @Override
     public void play() {
         System.out.println("\n" + "You played with " + name);
@@ -146,7 +146,8 @@ public class Cat extends Tamagotchi {
     @Override
     public void switchSleepState(String awakeOrNot) {
         if (awakeOrNot.equals("1")) {
-            System.out.println(name + " woke up feeling " + stateOfMind());
+            System.out.print(name + " woke up feeling ");
+            stateOfMind();
             sleepCatWakingUpArt();
 
         } else if (awakeOrNot.equals("2")) {

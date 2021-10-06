@@ -5,7 +5,7 @@ public class Dog extends Tamagotchi {
         super(name, gender);
     }
 
-    
+
     public static void feedDogArt() {
         System.out.println();
         System.out.println("    ,    /-.");
@@ -195,7 +195,8 @@ public class Dog extends Tamagotchi {
     @Override
     public void switchSleepState(String awakeOrNot) {
         if (awakeOrNot.equals("1")) {
-            System.out.println(name + " woke up feeling " + stateOfMind());
+            System.out.print(name + " woke up feeling ");
+            stateOfMind();
             sleepDogWakingUpArt();
 
         } else if (awakeOrNot.equals("2")) {
